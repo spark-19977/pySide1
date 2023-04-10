@@ -7,7 +7,7 @@ class Window(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.combo = QtWidgets.QComboBox()
-        self.combo.addItems(('123','3123','312'))
+        self.combo.addItems(('123', '3123', '312'))
         self.setWindowTitle('I love pancakes')
         self.text = QtWidgets.QLabel('Hello Vlad')
         self.button = QtWidgets.QPushButton('do not push me')
@@ -16,7 +16,7 @@ class Window(QtWidgets.QMainWindow):
                               alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
         self.layout.addWidget(self.button)
         self.layout.addWidget(self.combo)
-        self.button.clicked.connect(self.click)
+        self.button.clicked.connect(self.click)  # add linked function
 
     def click(self):
         self.text.setText('I have asked')
