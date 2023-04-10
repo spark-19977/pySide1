@@ -12,8 +12,7 @@ class Window(QtWidgets.QMainWindow):
         self.text = QtWidgets.QLabel('Hello Vlad')
         self.button = QtWidgets.QPushButton('do not push me')
         self.layout = QtWidgets.QVBoxLayout(self)
-        self.layout.addWidget(self.text,
-                              alignment=QtCore.Qt.AlignmentFlag.AlignCenter)
+        # dfgdfg
         self.layout.addWidget(self.button)
         self.layout.addWidget(self.combo)
         self.button.clicked.connect(self.click)  # add linked function
