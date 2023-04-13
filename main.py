@@ -4,7 +4,7 @@ from PySide6 import QtCore, QtWidgets, QtGui
 
 
 class Window(QtWidgets.QMainWindow):
-    def __init__(self):
+    def __init__(self):pyqt6-tools designer
         super().__init__()
         self.combo = QtWidgets.QComboBox()
         self.combo.addItems(('123', '3123', '312'))
