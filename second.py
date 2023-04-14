@@ -1,31 +1,33 @@
-import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QLineEdit, QVBoxLayout, QWidget
+from PySide6 import QtWidgets
 
 
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+class Form(QtWidgets.QDialog):
+    def __init__(self, parent=None):
+        super(Form, self).__init__(parent)
+        self.setWindowTitle('Form')
+        self.text_edit = QtWidgets.QLineEdit('Write your name here')
+        self.button = QtWidgets.QPushButton('See greetings')
 
-        self.setWindowTitle("My App")
+        self.layout = QtWidgets.QVBoxLayout()
+        self.layout.addWidget(self.text_edit)
+        self.layout.addWidget(self.button)
+        self.setLayout(self.layout)
 
-        self.label = QLabel()
+        self.button.clicked.connect(self.greeting)
+        self.text = QtWidgets.QLabel()
+        self.clicked = False
 
-        self.input = QLineEdit()
-        self.input.textChanged.connect(self.label.setText)
-
-        layout = QVBoxLayout()
-        layout.addWidget(self.input)
-        layout.addWidget(self.label)
-
-        container = QWidget()
-        container.setLayout(layout)
-
-        self.setCentralWidget(container)
+    def greeting(self):
+        if not self.clicked:
+            self.layout.addWidget(self.text)
+            self.clicked = True
+        self.text.setText(f'Hello {self.text_edit.text()}')
 
 
-app = QApplication(sys.argv)
-
-window = MainWindow()
-window.show()
-
-app.exec_()
+if __name__ == '__main__':
+    app = QtWidgets.QApplication()
+    window=QtWidgets.QMainWindow()
+    dialog = Form(window)
+    window.show()
+    dialog.show()
+    app.exec()
